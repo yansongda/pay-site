@@ -1,0 +1,25 @@
+# 说明
+
+| 方法名 | 参数 | 返回值 |
+| :---: | :---: | :---: |
+| success | 无 | Response |
+
+---
+
+## 例子
+
+```PHP
+// $result = $alipay->verify();
+
+return $alipay->success()->send(); // laravel 框架直接 return $alipay->success();
+```
+
+
+## 订单配置参数
+
+无
+
+
+## 返回值
+
+返回 Response 类型，可以通过`return $response->send();` 进行返回；如果在 laravel 框架中，可直接 `return $response;`

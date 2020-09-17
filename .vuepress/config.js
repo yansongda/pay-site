@@ -45,7 +45,7 @@ module.exports = {
             ['alipay/close', '关闭'],
             ['alipay/refund', '退款'],
             ['alipay/verify', '验证服务端信息'],
-            ['alipay/return', '返回']
+            ['alipay/return', '回应服务端消息']
           ]
         },
         {
@@ -60,7 +60,7 @@ module.exports = {
             ['wechat/close', '关闭'],
             ['wechat/refund', '退款'],
             ['wechat/verify', '验证服务端信息'],
-            ['wechat/return', '返回']
+            ['wechat/return', '回应服务端消息']
           ]
         },
         {

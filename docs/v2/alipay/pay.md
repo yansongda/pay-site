@@ -31,7 +31,7 @@ return $alipay->web($order)->send(); // laravel 框架中请直接 return $alipa
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了，比如，**`product_code`** 等参数。**
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`product_code` 等参数。
 
 所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://docs.open.alipay.com/270/alipay.trade.page.pay)，查看「请求参数」一栏。
 
@@ -53,7 +53,7 @@ return $alipay->wap($order)->send(); // laravel 框架中请直接 return $alipa
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了，比如，**`product_code`** 等参数。**
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`product_code` 等参数。
 
 所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://docs.open.alipay.com/203/107090/)，查看「请求参数」一栏。
 
@@ -75,7 +75,7 @@ return $alipay->app($order)->send(); // laravel 框架中请直接 return $alipa
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了，比如，**`product_code`** 等参数。**
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`product_code` 等参数。
 
 所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://docs.open.alipay.com/204/105465/)，查看「请求参数」一栏。
 
@@ -97,7 +97,7 @@ $result = $alipay->pos($order);
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了，比如，**`product_code`** 等参数。**
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`product_code` 等参数。
 
 所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://docs.open.alipay.com/api_1/alipay.trade.pay)，查看「请求参数」一栏。
 
@@ -119,7 +119,7 @@ $result = $alipay->scan($order);
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了，比如，**`product_code`** 等参数。**
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`product_code` 等参数。
 
 所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://docs.open.alipay.com/api_1/alipay.trade.precreate)，查看「请求参数」一栏。
 
@@ -155,7 +155,7 @@ $result = $alipay->find($order, 'transfer');
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**
 
 所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://docs.open.alipay.com/api_28/alipay.fund.trans.uni.transfer/)，查看「请求参数」一栏。
 
@@ -177,7 +177,7 @@ $result = $alipay->mini($order);
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了，比如，**`product_code`** 等参数。**
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`product_code` 等参数。
 
 所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://docs.open.alipay.com/api_1/alipay.trade.create/)，查看「请求参数」一栏。
 

@@ -1,6 +1,7 @@
 module.exports = {
   title: 'Pay',
   description: '让支付开发更简单',
+  dest: 'public',
   themeConfig: {
     logo: '/images/logo.png',
     smoothScroll: true,

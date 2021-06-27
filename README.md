@@ -20,7 +20,3 @@ features:
   details: 文件结构清晰，架构明了，欢迎 PR。
 footer: MIT Licensed | Copyright © 2018-now Yansongda
 ---
-
-### 鸣谢
-
-本站由 [![又拍云](/images/upyun.png)](https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral) 提供 CDN加速/云存储 服务

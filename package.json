@@ -4,7 +4,6 @@
     "docs:build": "vuepress build ."
   },
   "devDependencies": {
-    "vercel": "^23.0.1",
     "vuepress": "vuepress@next"
   }
 }

@@ -1,10 +1,10 @@
-# 查询 - Alipay
+---
+title: 查询
+---
 
 | 方法名 | 参数 | 返回值 |
 | :---: | :---: | :---: |
 | find | string/array $order, string/null $type | Collection |
-
----
 
 ## 查询普通支付订单
 

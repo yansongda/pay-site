@@ -1,8 +1,10 @@
-## 事件使用
-
+---
+title: 事件使用
 ---
 
-> {warning} 使用事件系统前，确保已初始化 pay。即调用了 `Pay::xxx($config)`
+::: tip
+使用事件系统前，确保已初始化 pay。即调用了 `Pay::xxx($config)`
+:::
 
 ```php
 <?php

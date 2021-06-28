@@ -4,6 +4,6 @@
     "docs:build": "vuepress build ."
   },
   "devDependencies": {
-    "vuepress": "^1.5.4"
+    "vuepress": "vuepress@next"
   }
 }

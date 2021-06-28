@@ -1,10 +1,10 @@
-# 取消 - Alipay
+---
+title: 取消
+---
 
 | 方法名 | 参数 | 返回值 |
 | :---: | :---: | :---: |
 | cancel | string/array $order | Collection |
-
----
 
 ## 例子
 

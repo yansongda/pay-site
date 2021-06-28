@@ -1,4 +1,6 @@
-# 支付 - Alipay
+---
+title: 支付
+---
 
 支付宝支付目前支持 7 种支付方法，对应的支付 method 如下：
 
@@ -11,8 +13,6 @@
 | scan | 扫码支付 | array $order | Collection |
 | transfer | 账户转账 | array $order | Collection |
 | mini | 小程序支付 | array $order | Collection |
-
----
 
 ## 电脑支付
 

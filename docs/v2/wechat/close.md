@@ -1,10 +1,10 @@
-# 关闭 - Wechat
+---
+title: 关闭
+---
 
 | 方法名 | 参数 | 返回值 |
 | :---: | :---: | :---: |
 | close | string/array $order | Collection |
-
----
 
 ## 例子
 

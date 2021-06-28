@@ -1,4 +1,6 @@
-# 支付 - Wechat
+---
+title: 支付
+---
 
 微信支付目前支持 9 种支付方法，对应的支付 method 如下：
 
@@ -13,8 +15,6 @@
 | miniapp | 小程序支付 | array $order | Collection |
 | redpack | 普通红包 | array $order | Collection |
 | groupRedpack | 裂变红包 | array $order | Collection |
-
----
 
 ## 公众号支付
 

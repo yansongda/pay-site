@@ -1,10 +1,10 @@
-# 下载对账单 - Alipay
+---
+title: 下载对账单
+---
 
 | 方法名 | 参数 | 返回值 |
 | :---: | :---: | :---: |
 | download | string/array $bill | string |
-
----
 
 ## 例子
 

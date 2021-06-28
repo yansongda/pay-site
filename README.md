@@ -3,8 +3,10 @@ home: true
 heroImage: '/images/logo.png'
 heroText: null
 tagline: null
-actionText: 快速上手 →
-actionLink: /docs/v2/
+actions:
+- text: 快速上手 →
+  link: /docs/v2/
+  type: primary
 features:
 - title: 简洁至上
   details: 让我们用最少的代码写最复杂的功能，把更多时间花在游戏上。

@@ -1,11 +1,10 @@
-# 退款 - Wechat
+---
+title: 退款
+---
 
 | 方法名 | 参数 | 返回值 |
 | :---: | :---: | :---: |
 | refund | array $order | Collection |
-
----
-
 
 ## 退款操作
 

@@ -1,3 +1,7 @@
+---
+title: 快速入门
+---
+
 # Get Started
 
 该文档为 v2.x 版本，如果您想找 v1.x 版本文档，请点击[https://github.com/yansongda/pay/tree/v1](https://github.com/yansongda/pay/tree/v1)

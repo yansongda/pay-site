@@ -20,7 +20,7 @@ title: 支付
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'out_trade_no' => time(),
     'body' => 'subject-测试',
@@ -45,7 +45,7 @@ $result = Pay::wechat($config)->mp($order);
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'out_trade_no' => time(),
     'body' => 'subject-测试',
@@ -66,7 +66,7 @@ return $wechat->wap($order)->send(); // laravel 框架中请直接 return $wecha
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'out_trade_no' => time(),
     'body' => 'subject-测试',
@@ -88,7 +88,7 @@ return $wechat->app($order)->send(); // laravel 框架中请直接 return $wecha
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'out_trade_no' => time(),
     'body' => 'subject-测试',
@@ -110,7 +110,7 @@ $result = $wechat->pos($order);
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'out_trade_no' => time(),
     'body' => 'subject-测试',
@@ -133,7 +133,7 @@ $result = $wechat->scan($order);
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'partner_trade_no' => '',              //商户订单号
     'openid' => '',                        //收款人的openid
@@ -165,7 +165,7 @@ $result = $wechat->transfer($order);
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'out_trade_no' => time(),
     'body' => 'subject-测试',
@@ -190,7 +190,7 @@ $result = $wechat->miniapp($order);
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'mch_billno' => '商户订单号',
     'send_name' => '商户名称',
@@ -220,7 +220,7 @@ $result = $wechat->redpack($order);
 
 ### 例子
 
-```PHP
+```php
 $order = [
     'mch_billno' => '商户订单号',
     'send_name' => '商户名称',

@@ -10,7 +10,7 @@ title: 确认回调
 
 ## 例子
 
-```PHP
+```php
 // $result = $alipay->verify();
 
 return $alipay->success()->send(); // laravel 框架直接 return $alipay->success();

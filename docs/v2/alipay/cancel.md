@@ -8,7 +8,7 @@ title: 取消
 
 ## 例子
 
-```PHP
+```php
 $order = [
     'out_trade_no' => '1514027114',
 ];

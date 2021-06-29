@@ -3540,7 +3540,7 @@ vue@^3.1.2:
     "@vue/runtime-dom" "3.1.2"
     "@vue/shared" "3.1.2"
 
-vuepress@vuepress@2.0.0-beta.20:
+vuepress@vuepress@next:
   version "2.0.0-beta.20"
   resolved "https://registry.nlark.com/vuepress/download/vuepress-2.0.0-beta.20.tgz#793df562d6a9b19cefaadcacb49c62703f070e40"
   integrity sha1-eT31YtapsZzvqtystJxicD8HDkA=

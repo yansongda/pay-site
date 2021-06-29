@@ -8,7 +8,7 @@ title: 查询
 
 ## 查询普通支付订单
 
-```PHP
+```php
 $order = [
     'out_trade_no' => '1514027114',
 ];
@@ -20,7 +20,7 @@ $result = $wechat->find($order);
 
 ## 查询退款订单
 
-```PHP
+```php
 $order = [
     'out_trade_no' => '1514027114',
 ];
@@ -32,9 +32,11 @@ $result = $wechat->find($order, 'refund');
 
 ## 查询企业付款订单
 
-> {info} v2.7.8 及以上可用
+:::tip
+v2.7.8 及以上可用
+:::
 
-```PHP
+```php
 $order = [
     'partner_trade_no' => '1514027114',
 ];

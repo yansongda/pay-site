@@ -8,7 +8,7 @@ title: 下载对账单
 
 ## 例子
 
-```PHP
+```php
 $bill = [
     'bill_date' => '2016-04-05',    // 2016-04
     'bill_type' => 'trade'

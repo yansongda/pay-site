@@ -8,7 +8,7 @@ title: 确认回调
 
 ## 使用方法
 
-```PHP
+```php
 // $result = $wechat->verify();
 
 return $wechat->success()->send(); // laravel 框架直接 return $wechat->success();

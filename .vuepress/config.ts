@@ -99,6 +99,24 @@ export default defineUserConfig<DefaultThemeOptions>({
                         '/docs/v2/others/faq.md'
                     ]
                 }
+            ],
+            '/docs/v3': [
+                {
+                    text: '概述',
+                    link: '/docs/v3',
+                    children: [
+                        '/docs/v3/README.md',
+                        '/docs/v3/overview/communication.md',
+                        '/docs/v3/overview/donate.md',
+                        '/docs/v3/overview/contribute.md'
+                    ]
+                },
+                {
+                    text: '快速入门',
+                    children: [
+                        '/docs/v3/quick-start/install.md',
+                    ]
+                }
             ]
         }
     },

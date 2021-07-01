@@ -5,7 +5,6 @@ export default defineUserConfig<DefaultThemeOptions>({
     lang: 'zh-CN',
     title: 'Pay',
     description: '让支付开发更简单',
-    dest: 'dist',
 
     themeConfig: {
         logo: '/images/logo.png',

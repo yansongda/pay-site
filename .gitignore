@@ -13,3 +13,5 @@ yarn-error.log
 .vuepress/dist/
 .vuepress/.cache/
 .vuepress/.temp/
+
+.vercel

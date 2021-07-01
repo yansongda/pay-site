@@ -8,7 +8,7 @@ title: 退款
 
 ## 退款操作
 
-```PHP
+```php
 $order = [
     'out_trade_no' => '1514027114',
     'refund_amount' => '0.01',

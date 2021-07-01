@@ -8,7 +8,7 @@ title: 查询
 
 ## 查询普通支付订单
 
-```PHP
+```php
 $order = [
     'out_trade_no' => '1514027114',
 ];
@@ -20,7 +20,7 @@ $result = $alipay->find($order);
 
 ## 查询退款订单
 
-```PHP
+```php
 $order = [
     'out_trade_no' => '1514027114',
     'out_request_no' => '1514027114'
@@ -32,7 +32,7 @@ $result = $alipay->find($order, 'refund');
 
 ## 查询转账订单
 
-```PHP
+```php
 $order = [
     'out_trade_no' => '1514027114',
 ];

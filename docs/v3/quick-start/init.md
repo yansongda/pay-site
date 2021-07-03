@@ -1,0 +1,94 @@
+---
+title: 初始化
+---
+
+# 初始化
+
+初始化有两种方式，大家可根据自己的习惯选择合适的方式。
+
+SDK 一旦初始化后，底层使用单例模式保存配置信息，所以，每次使用只需初始化一次即可，无需多次，后续重复初始化将不会生效
+当然，您也可以使用 `_force` 参数强制初始化覆盖原来的配置项。
+
+假设有以下配置文件：
+
+```php
+$config = [
+    'alipay' => [
+        'default' => [
+            'app_id' => '2016082000295641',
+            'app_secret_cert' => 'MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCDRjOg5DnX+8L+rB8d2MbrQ30Z7JPM4hiDhawHSwQCQ7RlmQNpl6b/N6IrPLcPFC1uii179U5Il5xTZynfjkUyJjnHusqnmHskftLJDKkmGbSUFMAlOv+NlpUWMJ2A+VUopl+9FLyqcV+XgbaWizxU3LsTtt64v89iZ2iC16H6/6a3YcP+hDZUjiNGQx9cuwi9eJyykvcwhDkFPxeBxHbfwppsul+DYUyTCcl0Ltbga/mUechk5BksW6yPPwprYHQBXyM16Jc3q5HbNxh3660FyvUBFLuVWIBs6RtR2gZCa6b8rOtCkPQKhUKvzRMlgheOowXsWdk99GjxGQDK5W4XAgMBAAECggEAYPKnjlr+nRPBnnNfR5ugzH67FToyrU0M7ZT6xygPfdyijaXDb2ggXLupeGUOjIRKSSijDrjLZ7EQMkguFHvtfmvcoDTDFaL2zq0a3oALK6gwRGxOuzAnK1naINkmeOmqiqrUab+21emEv098mRGbLNEXGCgltCtz7SiRdo/pgIPZ1wHj4MH0b0K2bFG3xwr51EyaLXKYH4j6w9YAXXsTdvzcJ+eRE0Yq4uGPfkziqg8d0xXSEt90HmCGHKo4O2eh1w1IlBcHfK0F6vkeUAtrtAV01MU2bNoRU147vKFxjDOVBlY1nIZY/drsbiPMuAfSsodL0hJxGSYivbKTX4CWgQKBgQDd0MkF5AIPPdFC+fhWdNclePRw4gUkBwPTIUljMP4o+MhJNrHp0sEy0sr1mzYsOT4J20hsbw/qTnMKGdgy784bySf6/CC7lv2hHp0wyS3Es0DRJuN+aTyyONOKGvQqd8gvuQtuYJy+hkIoHygjvC3TKndX1v66f9vCr/7TS0QPywKBgQCXgVHERHP+CarSAEDG6bzI878/5yqyJVlUeVMG5OXdlwCl0GAAl4mDvfqweUawSVFE7qiSqy3Eaok8KHkYcoRlQmAefHg/C8t2PNFfNrANDdDB99f7UhqhXTdBA6DPyW02eKIaBcXjZ7jEXZzA41a/zxZydKgHvz4pUq1BdbU5ZQKBgHyqGCDgaavpQVAUL1df6X8dALzkuqDp9GNXxOgjo+ShFefX/pv8oCqRQBJTflnSfiSKAqU2skosdwlJRzIxhrQlFPxBcaAcl0VTcGL33mo7mIU0Bw2H1d4QhAuNZIbttSvlIyCQ2edWi54DDMswusyAhHxwz88/huJfiad1GLaLAoGASIweMVNuD5lleMWyPw2x3rAJRnpVUZTc37xw6340LBWgs8XCEsZ9jN4t6s9H8CZLiiyWABWEBufU6z+eLPy5NRvBlxeXJOlq9iVNRMCVMMsKybb6b1fzdI2EZdds69LSPyEozjkxdyE1sqH468xwv8xUPV5rD7qd83+pgwzwSJkCgYBrRV0OZmicfVJ7RqbWyneBG03r7ziA0WTcLdRWDnOujQ9orhrkm+EY2evhLEkkF6TOYv4QFBGSHfGJ0SwD7ghbCQC/8oBvNvuQiPWI8B+00LwyxXNrkFOxy7UfIUdUmLoLc1s/VdBHku+JEd0YmEY+p4sjmcRnlu4AlzLxkWUTTg==',
+            'app_public_cert_path' => '/Users/yansongda/pay/cert/appCertPublicKey_2016082000295641.crt',
+            'alipay_public_cert_path' => '/Users/yansongda/pay/cert/alipayCertPublicKey_RSA2.crt',
+            'alipay_root_cert_path' => '/Users/yansongda/pay/cert/alipayRootCert.crt',
+            'return_url' => 'https://yansongda.cn/alipay/return',
+            'notify_url' => 'https://yansongda.cn/alipay/notify',
+            'mode' => Pay::MODE_SANDBOX,
+        ]
+    ],
+    'wechat' => [
+        'default' => [
+            // 公众号 的 app_id
+            'mp_app_id' => '2016082000291234',
+            // 小程序 的 app_id
+            'mini_app_id' => '',
+            // app 的 app_id
+            'app_id' => '',
+            // 商户号 
+            'mch_id' => '',
+            // 合单 app_id
+            'combine_app_id' => '',
+            // 合单商户号 
+            'combine_mch_id' => '',
+            // 商户秘钥
+            'mch_secret_key' => '',
+            // 商户私钥
+            'mch_secret_cert' => '',
+            // 商户公钥证书路径
+            'mch_public_cert_path' => '',
+            // 微信公钥证书路径
+            'wechat_public_cert_path' => '',
+            'mode' => \Yansongda\Pay\Pay::MODE_SANDBOX,
+        ]
+    ],
+    'logger' => [
+        'enable' => false,
+        'file' => './logs/alipay.log',
+        'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
+        'type' => 'single', // optional, 可选 daily.
+        'max_file' => 30, // optional, 当 type 为 daily 时有效，默认 30 天
+    ],
+    'http' => [ // optional
+        'timeout' => 5.0,
+        'connect_timeout' => 5.0,
+        // 更多配置项请参考 [Guzzle](https://guzzle-cn.readthedocs.io/zh_CN/latest/request-options.html)
+    ],
+];
+```
+
+## 方式一 <Badge type="tip" text="推荐" vertical="top" />
+
+直接调用 `config` 方法初始化
+
+```php
+Pay::config($config);
+```
+
+如果需要强制初始化覆盖配置信息
+
+```php
+Pay::config(array_merge($config, ['_force' => true]));
+```
+
+## 方式二
+
+在每次实际调用时顺便初始化
+
+```php
+Pay::alipay($config)->web($order);
+```
+
+如果需要强制初始化覆盖配置信息
+
+```php
+Pay::alipay(array_merge($config, ['_force' => true]))->web($order);
+```

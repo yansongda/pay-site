@@ -114,6 +114,30 @@ export default defineUserConfig<DefaultThemeOptions>({
                     text: '快速入门',
                     children: [
                         '/docs/v3/quick-start/install.md',
+                        '/docs/v3/quick-start/init.md',
+                        '/docs/v3/quick-start/alipay.md',
+                        '/docs/v3/quick-start/wechat.md',
+                        '/docs/v3/quick-start/return-format.md'
+                    ]
+                },
+                {
+                    text: '核心架构',
+                    children: [
+                    ]
+                },
+                {
+                    text: '支付宝',
+                    children: [
+                    ]
+                },
+                {
+                    text: '微信',
+                    children: [
+                    ]
+                },
+                {
+                    text: '其它',
+                    children: [
                     ]
                 }
             ]

@@ -1,0 +1,38 @@
+---
+title: 接收回调
+---
+
+| 方法名 | 参数 | 返回值 |
+| :---: | :---: | :---: |
+| callback | 无/array/ServerRequestInterface | Collection |
+
+# 接收支付宝回调
+
+使用的加密方式为支付宝官方推荐的 **RSA2**，目前只支持这一种加密方式，且没有支持其他加密方式的计划。
+
+## 例子
+
+```php
+Pay::config($this->config);
+
+// 是的，你没有看错，就是这么简单！
+$result = Pay::alipay()->callback();
+```
+
+## 参数
+
+### 无参数
+
+如果您没有传参，则 `yansongda/pay` 会自动识别支付宝的回调请求并处理，通过 `Collection` 实例返回支付宝的处理参数
+
+:::warning
+建议仅在 php-fpm 下使用，swoole 方式请使用 `ServerRequestInterface` 参数传递方式
+:::
+
+### `ServerRequestInterface`
+
+推荐在 swoole 环境下传递此参数，传递此参数后， yansongda/pay 会自动进行后续处理
+
+### `array`
+
+也可以自行解析请求参数，传递一个 array 会自动进行后续处理

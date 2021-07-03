@@ -61,8 +61,8 @@ export default defineUserConfig<DefaultThemeOptions>({
                         '/docs/v2/alipay/cancel.md',
                         '/docs/v2/alipay/close.md',
                         '/docs/v2/alipay/refund.md',
-                        '/docs/v2/alipay/verify.md',
-                        '/docs/v2/alipay/return.md'
+                        '/docs/v2/alipay/callback.md',
+                        '/docs/v2/alipay/response.md'
                     ]
                 },
                 {
@@ -74,8 +74,8 @@ export default defineUserConfig<DefaultThemeOptions>({
                         '/docs/v2/wechat/cancel.md',
                         '/docs/v2/wechat/close.md',
                         '/docs/v2/wechat/refund.md',
-                        '/docs/v2/wechat/verify.md',
-                        '/docs/v2/wechat/return.md'
+                        '/docs/v2/wechat/callback.md',
+                        '/docs/v2/wechat/response.md'
                     ]
                 },
                 {
@@ -121,17 +121,36 @@ export default defineUserConfig<DefaultThemeOptions>({
                     ]
                 },
                 {
+                    text: '支付宝',
+                    children: [
+                        '/docs/v3/alipay/pay.md',
+                        '/docs/v3/alipay/find.md',
+                        '/docs/v3/alipay/refund.md',
+                        '/docs/v3/alipay/close.md',
+                        '/docs/v3/alipay/cancel.md',
+                        '/docs/v3/alipay/callback.md',
+                        '/docs/v3/alipay/response.md'
+                    ]
+                },
+                {
+                    text: '微信',
+                    children: [
+                        '/docs/v3/wechat/pay.md',
+                        '/docs/v3/wechat/find.md',
+                        '/docs/v3/wechat/refund.md',
+                        '/docs/v3/wechat/close.md',
+                        '/docs/v3/wechat/cancel.md',
+                        '/docs/v3/wechat/callback.md',
+                        '/docs/v3/wechat/response.md'
+                    ]
+                },
+                {
                     text: '核心架构',
                     children: [
                     ]
                 },
                 {
-                    text: '支付宝',
-                    children: [
-                    ]
-                },
-                {
-                    text: '微信',
+                    text: '开发指南',
                     children: [
                     ]
                 },

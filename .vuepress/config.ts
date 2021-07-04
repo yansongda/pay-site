@@ -128,6 +128,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                         '/docs/v3/alipay/refund.md',
                         '/docs/v3/alipay/close.md',
                         '/docs/v3/alipay/cancel.md',
+                        '/docs/v3/alipay/more.md',
                         '/docs/v3/alipay/callback.md',
                         '/docs/v3/alipay/response.md'
                     ]
@@ -140,6 +141,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                         '/docs/v3/wechat/refund.md',
                         '/docs/v3/wechat/close.md',
                         '/docs/v3/wechat/cancel.md',
+                        '/docs/v3/wechat/more.md',
                         '/docs/v3/wechat/callback.md',
                         '/docs/v3/wechat/response.md'
                     ]

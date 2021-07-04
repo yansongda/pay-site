@@ -2,33 +2,35 @@
 title: 支付
 ---
 
-微信支付目前支持 9 种支付方法，对应的支付 method 如下：
+微信支付目前直接内置支持 7 种快捷方式支付方法，对应的支付 method 如下：
 
 | method | 说明 | 参数 | 返回值 |
 | :---: | :---: | :---: | :---: |
 | mp | 公众号支付 | array $order | Collection |
 | wap | 手机网站支付 | array $order | Response |
-| app | APP 支付 | array $order | JsonResponse |
-| pos | 刷卡支付 | array $order | Collection |
+| app | APP 支付 | array $order | Response |
 | scan | 扫码支付 | array $order | Collection |
-| transfer | 账户转账 | array $order | Collection |
-| miniapp | 小程序支付 | array $order | Collection |
-| redpack | 普通红包 | array $order | Collection |
-| groupRedpack | 裂变红包 | array $order | Collection |
+| mini | 小程序支付 | array $order | Collection |
 
 ## 公众号支付
 
 ### 例子
 
 ```php
+Pay::config($config);
+
 $order = [
     'out_trade_no' => time(),
-    'body' => 'subject-测试',
-    'total_fee' => '1',
-    'openid' => 'onkVf1FjWS5SBxxxxxxxx',
+    'description' => 'subject-测试',
+    'amount' => [
+        'total' => '1',
+    ],
+    'payer' => [
+        'openid' => 'onkVf1FjWS5SBxxxxxxxx',
+    ],
 ];
 
-$result = Pay::wechat($config)->mp($order);
+$result = Pay::wechat()->mp($order);
 // 返回 Collection 实例。包含了调用 JSAPI 的所有参数，如appId，timeStamp，nonceStr，package，signType，paySign 等；
 // 可直接通过 $result->appId, $result->timeStamp 获取相关值。
 // 后续调用不在本文档讨论范围内，请自行参考官方文档。
@@ -36,9 +38,9 @@ $result = Pay::wechat($config)->mp($order);
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`appid`，`sign` 等参数，大家只需传入订单类主观参数即可。
 
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1)，查看「请求参数」一栏。
+所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_1_1.shtml)，查看「请求参数」一栏。
 
 
 ## 手机网站支付
@@ -46,134 +48,113 @@ $result = Pay::wechat($config)->mp($order);
 ### 例子
 
 ```php
+Pay::config($config);
+
 $order = [
     'out_trade_no' => time(),
-    'body' => 'subject-测试',
-    'total_fee' => '1',
+    'description' => 'subject-测试',
+    'amount' => [
+        'total' => '1',
+    ],
+    'scene_info' => [
+        'payer_client_ip' => '1.2.4.8',
+        'h5_info' => [
+            'type' => 'Wap',
+        ]       
+    ],
 ];
 
-return $wechat->wap($order)->send(); // laravel 框架中请直接 return $wechat->wap($order)
+return Pay::wechat()->wap($order);
 ```
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign` 等参数，大家只需传入订单类主观参数即可。
 
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=9_20&index=1)，查看「请求参数」一栏。
+所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_3_1.shtml)，查看「请求参数」一栏。
 
+### 调用支付
+
+后续调起支付不再本文档讨论范围内，请参考[官方文档](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_3_4.shtml)
 
 ## APP 支付
 
 ### 例子
 
 ```php
+Pay::config($config);
+
 $order = [
     'out_trade_no' => time(),
-    'body' => 'subject-测试',
-    'total_fee' => '1',
+    'description' => 'subject-测试',
+    'amount' => [
+        'total' => '1',
+    ],
 ];
 
 // 将返回 json 格式，供后续 APP 调用，调用方式不在本文档讨论范围内，请参考官方文档。
-return $wechat->app($order)->send(); // laravel 框架中请直接 return $wechat->app($order)
+return Pay::wechat()->app($order);
 ```
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign` 等参数，大家只需传入订单类主观参数即可。
 
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1)，查看「请求参数」一栏。
+所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_2_1.shtml)，查看「请求参数」一栏。
 
+### 调用支付
 
-## 刷卡支付
-
-### 例子
-
-```php
-$order = [
-    'out_trade_no' => time(),
-    'body' => 'subject-测试',
-    'total_fee'      => '1',
-    'auth_code' => '1354804793001231564897',
-];
-
-$result = $wechat->pos($order);
-```
-
-### 订单配置参数
-
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
-
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1)，查看「请求参数」一栏。
-
+后续调起支付不再本文档讨论范围内，请参考[官方文档](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_2_4.shtml)
 
 ## 扫码支付
 
 ### 例子
 
 ```php
+Pay::config($config);
+
 $order = [
     'out_trade_no' => time(),
-    'body' => 'subject-测试',
-    'total_fee'      => '1',
+    'description' => 'subject-测试',
+    'amount' => [
+        'total' => '1',
+    ],
 ];
 
-// 扫码支付使用 模式二
-$result = $wechat->scan($order);
+$result = Pay::wechat()->scan($order);
 // 二维码内容： $qr = $result->code_url;
 ```
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign` 等参数，大家只需传入订单类主观参数即可。
 
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1)，查看「请求参数」一栏。
+所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_4_1.shtml)，查看「请求参数」一栏。
 
+### 调用支付
 
-## 账户转账
-
-### 例子
-
-```php
-$order = [
-    'partner_trade_no' => '',              //商户订单号
-    'openid' => '',                        //收款人的openid
-    'check_name' => 'NO_CHECK',            //NO_CHECK：不校验真实姓名\FORCE_CHECK：强校验真实姓名
-    // 're_user_name'=>'张三',              //check_name为 FORCE_CHECK 校验实名的时候必须提交
-    'amount' => '1',                       //企业付款金额，单位为分
-    'desc' => '帐户提现',                  //付款说明
-];
-
-$result = $wechat->transfer($order);
-```
-
-### 订单配置参数
-
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
-
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2)，查看「请求参数」一栏。
-
-### 使用 APP/小程序 账号转账
-
-如果您需要通过 `APP/小程序` 的商户账号appid进行转账，请传入参数：`['type' => 'app']`/`['type' => 'miniapp']`
-
-### ！注意！
-
-如果您在队列中使用，请自行传参 `spbill_create_ip`。
-
+后续调起支付不再本文档讨论范围内，请参考[官方文档](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_4_4.shtml)
 
 ## 小程序
 
 ### 例子
 
 ```php
+Pay::config($config);
+
 $order = [
     'out_trade_no' => time(),
-    'body' => 'subject-测试',
-    'total_fee' => '1',
-    'openid' => 'onkVf1FjWS5SBxxxxxxxx',
+    'description' => 'subject-测试',
+    'amount' => [
+        'total' => 1,
+        'currency' => 'CNY',
+    ],
+    'payer' => [
+        'openid' => '123fsdf234',
+    ]
 ];
 
-$result = $wechat->miniapp($order);
+$result = Pay::wechat()->mini($order);
 // 返回 Collection 实例。包含了调用 JSAPI 的所有参数，如appId，timeStamp，nonceStr，package，signType，paySign 等；
 // 可直接通过 $result->appId, $result->timeStamp 获取相关值。
 // 后续调用不在本文档讨论范围内，请自行参考官方文档。
@@ -181,71 +162,34 @@ $result = $wechat->miniapp($order);
 
 ### 订单配置参数
 
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
+**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign` 等参数，大家只需传入订单类主观参数即可。
 
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1)，查看「请求参数」一栏。
+所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_5_1.shtml)，查看「请求参数」一栏。
 
+### 调用支付
+
+后续调起支付不再本文档讨论范围内，请参考[官方文档](https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_5_4.shtml)
+
+## 刷卡支付
+
+:::warning
+微信支付 v3 版 api 并不支持刷卡支付，后续将接入微信支付 v2 版 API，敬请期待
+:::
+
+## 账户转账
+
+:::warning
+微信支付 v3 版 api 并不支持转账，后续将接入微信支付 v2 版 API，敬请期待
+:::
 
 ## 普通红包
 
-### 例子
-
-```php
-$order = [
-    'mch_billno' => '商户订单号',
-    'send_name' => '商户名称',
-    'total_amount' => '1',
-    're_openid' => '用户openid',
-    'total_num' => '1',
-    'wishing' => '祝福语',
-    'act_name' => '活动名称',
-    'remark' => '备注',
-];
-
-$result = $wechat->redpack($order);
-```
-
-### 订单配置参数
-
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
-
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3)，查看「请求参数」一栏。
-
-### ！注意！
-
-如果您在队列中使用，请自行传参 `client_ip`。
-
+:::warning
+微信支付 v3 版 api 并不支红包，后续将接入微信支付 v2 版 API，敬请期待
+:::
 
 ## 裂变红包
 
-### 例子
-
-```php
-$order = [
-    'mch_billno' => '商户订单号',
-    'send_name' => '商户名称',
-    'total_amount' => '1',
-    're_openid' => '用户openid',
-    'total_num' => '3',
-    'wishing' => '祝福语',
-    'act_name' => '活动名称',
-    'remark' => '备注',
-];
-
-$result = $wechat->groupRedpack($order);
-```
-
-### 订单配置参数
-
-**所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了**，比如，`trade_type`，`appid`，`sign`, `spbill_create_ip` 等参数，大家只需传入订单类主观参数即可。
-
-所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考[这里](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&index=4)，查看「请求参数」一栏。
-
-## 返回值
-
-**各支付方法返回值请参考顶部表格**
-
-返回只会返回两种类型 `Symfony\Component\HttpFoundation\Response` 或 `Yansongda\Supports\Collection`
-
-* 返回 Response 类型时，可以通过 `return $response->send()` 直接进行返回（laravel 框架中使用请直接`return $response` ）
-* 返回 Collection 类型时，可以通过 `$collection->xxx` 得到服务器返回的数据。 
+:::warning
+微信支付 v3 版 api 并不支持红包，后续将接入微信支付 v2 版 API，敬请期待
+:::

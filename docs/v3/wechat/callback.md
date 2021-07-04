@@ -4,37 +4,31 @@ title: 接收回调
 
 | 方法名 | 参数 | 返回值 |
 | :---: | :---: | :---: |
-| verify | 无 | Collection |
+| callback | 无/array/ServerRequestInterface | Collection |
 
-## 支付异步通知验证
+## 例子
 
 ```php
-$result = $wechat->verify();
-// 是的，你没有看错，就是这么简单！
+Pay::config($this->config);
 
-// return $wechat->success()->send(); // laravel 框架直接 return $wechat->success();
+// 是的，你没有看错，就是这么简单！
+$result = Pay::wechat()->callback();
 ```
 
+## 参数
 
-## 退款异步通知验证
+### 无参数
 
-:::tip
-v2.4.0 及以上可用
+如果您没有传参，则 `yansongda/pay` 会自动识别微信的回调请求并进行验签解密处理，通过 `Collection` 实例返回微信的处理参数
+
+:::warning
+建议仅在 php-fpm 下使用，swoole 方式请使用 `ServerRequestInterface` 参数传递方式
 :::
 
-```php
-$result = $wechat->verify(null, true);
-// 是的，你没有看错，就是这么简单！
+### `ServerRequestInterface`
 
-// return $wechat->success()->send(); // laravel 框架直接 return $wechat->success();
-```
+推荐在 swoole 环境下传递此参数，传递此参数后， yansongda/pay 会自动进行后续处理
 
+### `array`
 
-## 配置参数
-
-无
-
-
-## 返回值
-
-返回 Collection 类型，可以通过 `$collection->xxx` 得到服务器返回的数据。
+也可以自行解析请求参数，传递一个 array 会自动进行后续处理

@@ -149,11 +149,10 @@ export default defineUserConfig<DefaultThemeOptions>({
                 {
                     text: '核心架构',
                     children: [
-                    ]
-                },
-                {
-                    text: '开发指南',
-                    children: [
+                        '/docs/v3/kernel/rocket.md',
+                        '/docs/v3/kernel/pipeline.md',
+                        '/docs/v3/kernel/plugin.md',
+                        '/docs/v3/kernel/shortcut.md'
                     ]
                 },
                 {

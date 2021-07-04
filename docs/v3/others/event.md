@@ -8,6 +8,42 @@ title: 事件机制
 
 SDK 使用 [symfony/event-dispatcher](https://github.com/symfony/event-dispatcher) 组件进行事件的相关操作。
 
+在使用之前，需要先确保安装了 `symfony/event-dispatcher` 组件，如果没有，请安装
+
+```shell
+composer require symonfy/event-dispatcher
+```
+
+## 使用
+
+::: tip
+使用事件系统前，确保已初始化 pay。即调用了 `Pay::config($config)`
+:::
+
+```php
+<?php
+
+use Yansongda\Pay\Event;
+use Yansongda\Pay\Event\PayStarted;
+
+// 1. 新建一个监听器
+class PayStartedListener
+{
+    public function sendEmail(PayStarted $event)
+    {
+        // 可以直接通过 $event 获取事件的额外数据，例如：
+        //      支付传递的参数：$event->params
+        
+        // coding to send email...
+    }
+}
+
+// 2. 添加监听器
+Event::addListener(PayStarted::class, [new PayStartedListener(), 'sendEmail']);
+
+// 3. 喝杯咖啡
+```
+
 ## 事件
 
 ### 支付开始

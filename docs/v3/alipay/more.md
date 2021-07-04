@@ -1,5 +1,5 @@
 ---
-title: 更多便捷
+title: 更多便捷插件
 ---
 
 # 更多方便的API
@@ -10,90 +10,100 @@ title: 更多便捷
 诸如签名、API调用、解密、验签、解包等基础插件已经内置在 Pay 中，
 您可以使用 `Pay::alipay()->mergeCommonPlugins(array $plugins)` 来获取调用 API 所必须的常用插件
 
-下面将逐步介绍插件的使用方式
-
-## 一、自定义插件
-
-首先，您需要自定义插件，此插件只需要关注业务逻辑即可，不需要考虑签名、验签等操作。
-
-其实大家经常使用的 「网站支付」「小程序支付」「查询订单」 等均属于自定义插件，只不过这类插件已经内置在 yansongda/pay 中了，不需要您额外开发即可使用。
-
-以 查询订单 插件为例
+首先，查找你想使用的插件，然后
 
 ```php
-<?php
+Pay::config($config);
 
-declare(strict_types=1);
-
-namespace Yansongda\Pay\Plugin\Alipay\Trade;
-
-use Yansongda\Pay\Plugin\Alipay\GeneralPlugin;
-
-class QueryPlugin extends GeneralPlugin
-{
-    protected function getMethod(): string
-    {
-        return 'alipay.trade.query';
-    }
-}
-```
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace Yansongda\Pay\Plugin\Alipay;
-
-use Closure;
-use Yansongda\Pay\Contract\PluginInterface;
-use Yansongda\Pay\Logger;
-use Yansongda\Pay\Rocket;
-
-abstract class GeneralPlugin implements PluginInterface
-{
-    public function assembly(Rocket $rocket, Closure $next): Rocket
-    {
-        Logger::info('[alipay][GeneralPlugin] 通用插件开始装载', ['rocket' => $rocket]);
-
-        $rocket->mergePayload([
-            'method' => $this->getMethod(),
-            'biz_content' => $rocket->getParams(),
-        ]);
-
-        Logger::info('[alipay][GeneralPlugin] 通用插件装载完毕', ['rocket' => $rocket]);
-
-        return $next($rocket);
-    }
-
-    abstract protected function getMethod(): string;
-}
-```
-
-通过以上代码，我们大概能明白，查询订单的 `QueryPlugin` 插件，继承了 `GeneralPlugin` 这个常用插件，
-通过支付宝官方文档，我们知道，查询订单的 API 将传参中的 method 改为了 `alipay.trade.query`，其它参数均是个性化参数，和入参有关，
-因此，我们在做查询订单时，是需要简单的把 method 按要求更改即可，是不是很简单？
-
-## 二、获取所有常用插件
-
-当准备好自定义插件后，我们第二步将获取支付宝其它 通用插件，如 加密，签名，调用支付宝接口等。
-
-只需要简单的使用以下代码即可获取通用插件
-
-```php
-$allPlugins = Pay::alipay()->mergeCommonPlugins([QueryPlugin::class]);
-```
-
-## 三、运用插件调用 API 访问支付宝服务
-
-随后，即可运转所有插件，访问支付宝的API服务了
-
-```php
 $params = [
     'out_trade_no' => '1514027114',
 ];
 
+$allPlugins = Pay::alipay()->mergeCommonPlugins([QueryPlugin::class]);
+
 $result = Pay::alipay()->pay($allPlugins, $params);
 ```
 
-代码中的 `$params` 为调用 API 所需要的其它参数。
+关于插件的详细介绍，如果您感兴趣，可以参考 [这篇说明文档](/docs/v3/kernel/plugin.md)
+
+## 账务API插件
+
+### 下载对账单
+
+- `Yansongda\Pay\Plugin\Alipay\Data\BillDownloadUrlQueryPlugin`
+
+### 申请电子回单
+
+- `Yansongda\Pay\Plugin\Alipay\Data\BillEreceiptApplyPlugin`
+
+### 查询电子回单状态
+
+- `Yansongda\Pay\Plugin\Alipay\Data\BillEreceiptQueryPlugin`
+
+## 生活缴费API插件
+
+### 缴费直连代扣订单支付状态查询
+
+- `Yansongda\Pay\Plugin\Alipay\Ebpp\PdeductBillStatusPlugin`
+
+### 公共事业缴费直连代扣扣款支付接口
+
+- `Yansongda\Pay\Plugin\Alipay\Ebpp\PdeductPayPlugin`
+
+### 缴费直连代扣签约
+
+- `Yansongda\Pay\Plugin\Alipay\Ebpp\PdeductSignAddPlugin`
+
+### 缴费直连代扣取消签约
+
+- `Yansongda\Pay\Plugin\Alipay\Ebpp\PdeductSignCancelPlugin`
+
+## 资金API插件
+
+### 支付宝资金账户资产查询接口
+
+- `Yansongda\Pay\Plugin\Alipay\Fund\AccountQueryPlugin`
+
+### 资金授权冻结接口
+
+- `Yansongda\Pay\Plugin\Alipay\Fund\AuthOrderFreezePlugin`
+
+### 资金授权解冻接口
+
+- `Yansongda\Pay\Plugin\Alipay\Fund\AuthOrderUnfreezePlugin`
+
+### 查询转账订单接口
+
+- `Yansongda\Pay\Plugin\Alipay\Fund\TransOrderQueryPlugin`
+
+### 资金转账页面支付接口
+
+- `Yansongda\Pay\Plugin\Alipay\Fund\TransPagePayPlugin`
+
+:::warning
+该插件需配合 `HtmlResponsePlugin` 插件一起使用
+:::
+
+### 单笔转账接口
+
+- `Yansongda\Pay\Plugin\Alipay\Fund\TransUniTransferPlugin`
+
+## 工具类API
+
+### 换取授权访问令牌
+
+- `Yansongda\Pay\Plugin\Alipay\Tools\SystemOauthTokenPlugin`
+
+### 换取应用授权令牌
+
+- `Yansongda\Pay\Plugin\Alipay\Tools\OpenAuthTokenAppPlugin`
+
+### 查询某个应用授权AppAuthToken的授权信息
+
+- `Yansongda\Pay\Plugin\Alipay\Tools\OpenAuthTokenAppQueryPlugin`
+
+## 会员API
+
+### 支付宝会员授权信息查询接口
+
+- `Yansongda\Pay\Plugin\Alipay\User\InfoSharePlugin`

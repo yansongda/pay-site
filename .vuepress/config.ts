@@ -159,6 +159,9 @@ export default defineUserConfig<DefaultThemeOptions>({
                 {
                     text: '其它',
                     children: [
+                        '/docs/v3/others/event.md',
+                        '/docs/v3/others/logger.md',
+                        '/docs/v3/others/faq.md',
                     ]
                 }
             ]

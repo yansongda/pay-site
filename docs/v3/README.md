@@ -1,21 +1,12 @@
 ---
 title: 介绍
 ---
+
 <p align="center">
 <a href="https://pay.yansongda.cn" target="_blank" rel="noopener noreferrer"><img width="200" src="https://pay.yansongda.cn/images/logo.png" alt="Logo"></a>
 </p>
 
-<p align="center">
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yansongda/pay/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yansongda/pay/?branch=master)
-[![Linter Status](https://github.com/yansongda/pay/workflows/Linter/badge.svg)](https://github.com/yansongda/pay/actions)
-[![Tester Status](https://github.com/yansongda/pay/workflows/Tester/badge.svg)](https://github.com/yansongda/pay/actions)
-[![Latest Stable Version](https://poser.pugx.org/yansongda/pay/v/stable)](https://packagist.org/packages/yansongda/pay)
-[![Total Downloads](https://poser.pugx.org/yansongda/pay/downloads)](https://packagist.org/packages/yansongda/pay)
-[![Latest Unstable Version](https://poser.pugx.org/yansongda/pay/v/unstable)](https://packagist.org/packages/yansongda/pay)
-[![License](https://poser.pugx.org/yansongda/pay/license)](https://packagist.org/packages/yansongda/pay)
-
-</p>
+v3 版与 v2 版在底层有很大的不同，基础架构做了重新的设计，更易扩展，使用起来更方便。
 
 ## 前言
 
@@ -31,6 +22,7 @@ QQ交流群：690027516
 
 ## 特点
 
+- 多租户支持
 - 灵活的插件机制
 - 丰富的事件系统
 - 命名不那么乱七八糟

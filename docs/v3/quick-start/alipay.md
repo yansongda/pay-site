@@ -114,6 +114,19 @@ $result = Pay::alipay()->refund([
 ]);
 ```
 
+## 查询订单
+
+```php
+Pay::config($this->config);
+
+$order = [
+    'out_trade_no' => '1514027114',
+];
+// $order = '1514027114';
+
+$result = Pay::alipay()->find($order);
+```
+
 ## 支付宝回调处理
 
 ```php

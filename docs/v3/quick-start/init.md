@@ -92,3 +92,22 @@ Pay::alipay($config)->web($order);
 ```php
 Pay::alipay(array_merge($config, ['_force' => true]))->web($order);
 ```
+
+## 配置切换
+
+v3.x 版本开始，支持了多租户功能，所以，不同租户有不同的配置项，如果想要在使用时切换配置项怎么办呢？
+
+其实很简单，传参时，加一个参数即可： `'_config' => 'default'`。
+
+例如，我们想在查询支付宝支付订单时，使用另外一个租户的配置文件
+
+```php
+Pay::config($this->config);
+
+$order = [
+    'out_trade_no' => '1514027114',
+    '_config' => 'default', // 注意这一行
+];
+
+$result = Pay::alipay()->find($order);
+```

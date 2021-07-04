@@ -107,7 +107,8 @@ export default defineUserConfig<DefaultThemeOptions>({
                         '/docs/v3/README.md',
                         '/docs/v3/overview/communication.md',
                         '/docs/v3/overview/donate.md',
-                        '/docs/v3/overview/contribute.md'
+                        '/docs/v3/overview/contribute.md',
+                        '/docs/v3/overview/versions.md'
                     ]
                 },
                 {
@@ -161,6 +162,12 @@ export default defineUserConfig<DefaultThemeOptions>({
                         '/docs/v3/others/event.md',
                         '/docs/v3/others/logger.md',
                         '/docs/v3/others/faq.md',
+                    ]
+                },
+                {
+                    text: '升级指南',
+                    children: [
+                        '/docs/v3/upgrade/v3.0.md'
                     ]
                 }
             ]

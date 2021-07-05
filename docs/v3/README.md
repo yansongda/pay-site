@@ -6,6 +6,8 @@ title: 介绍
 <a href="https://pay.yansongda.cn" target="_blank" rel="noopener noreferrer"><img width="200" src="https://pay.yansongda.cn/images/logo.png" alt="Logo"></a>
 </p>
 
+该文档为 v3 版本的文档，如果您正在使用 v2.x 版本的 SDK，请您传送至 [这里](/docs/v2/)。
+
 v3 版与 v2 版在底层有很大的不同，基础架构做了重新的设计，更易扩展，使用起来更方便。
 
 ## 前言

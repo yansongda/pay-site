@@ -5,7 +5,7 @@ heroText: null
 tagline: null
 actions:
 - text: 快速上手 →
-  link: /docs/v2/
+  link: /docs/v3/
   type: primary
 features:
 - title: 简洁至上

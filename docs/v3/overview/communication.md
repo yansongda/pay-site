@@ -4,6 +4,10 @@ title: 线上交流
 
 # 线上交流
 
+## Discord <Badge type="tip" text="推荐" vertical="top" />
+
+https://discord.gg/b2eGk7appg
+
 ## Issue <Badge type="tip" text="推荐" vertical="top" />
 
 [https://github.com/yansongda/pay/issues](https://github.com/yansongda/pay/issues)

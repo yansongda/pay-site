@@ -23,7 +23,7 @@ $config = [
             'app_public_cert_path' => '/Users/yansongda/pay/cert/appCertPublicKey_2016082000295641.crt',
             // 支付宝公钥证书 路径
             'alipay_public_cert_path' => '/Users/yansongda/pay/cert/alipayCertPublicKey_RSA2.crt',
-            // 应用根证书 路径
+            // 支付宝根证书 路径
             'alipay_root_cert_path' => '/Users/yansongda/pay/cert/alipayRootCert.crt',
             'return_url' => 'https://yansongda.cn/alipay/return',
             'notify_url' => 'https://yansongda.cn/alipay/notify',

@@ -128,8 +128,8 @@ $result = Pay::alipay()->find($order);
 
 关于微信公钥证书的详细介绍可以参考[微信官方文档](https://pay.weixin.qq.com/wiki/doc/apiv3/wechatpay/wechatpay4_1.shtml)
 
-::: tip Swoole 模式
-如果您在 swoole 等常驻进程下使用 Pay，那您无需再配置 `wechat_public_cert_path` 参数，Pay 会自动帮你搞定一切：从微信服务器获取最新证书并自动缓存配置。
+::: tip 常驻进程模式
+如果您在 Swoole 等常驻进程下使用 Pay，那您无需再配置 `wechat_public_cert_path` 参数，Pay 会自动帮你搞定一切：从微信服务器获取最新证书并自动缓存配置。
 :::
 
 ::: warning PHP-FPM 模式

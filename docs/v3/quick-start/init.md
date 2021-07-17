@@ -50,9 +50,10 @@ $config = [
             'mch_secret_cert' => '',
             // 商户公钥证书路径
             'mch_public_cert_path' => '',
-            // 微信公钥证书路径
-            'wechat_public_cert_path' => '',
-            'mode' => \Yansongda\Pay\Pay::MODE_SANDBOX,
+            // 微信公钥证书路径, optional，强烈建议 php-fpm 模式下配置此参数
+            'wechat_public_cert_path' => [
+                '45F59D4DABF31918AFCEC556D5D2C6E376675D57' => __DIR__.'/Cert/wechatPublicKey.crt',
+            ],
         ]
     ],
     'logger' => [
@@ -70,7 +71,9 @@ $config = [
 ];
 ```
 
-## 方式一 <Badge type="tip" text="推荐" vertical="top" />
+## 初始化方式
+
+### 方式一 <Badge type="tip" text="推荐" vertical="top" />
 
 直接调用 `config` 方法初始化
 
@@ -84,7 +87,7 @@ Pay::config($config);
 Pay::config(array_merge($config, ['_force' => true]));
 ```
 
-## 方式二
+### 方式二
 
 在每次实际调用时顺便初始化
 
@@ -116,3 +119,19 @@ $order = [
 
 $result = Pay::alipay()->find($order);
 ```
+
+## 关于微信公钥证书
+
+微信支付公钥证书主要用于微信支付响应消息时的验签动作。
+
+例如，当请求给微信支付服务器时，微信支付接收到请求会作出响应，系统在接收到响应后，需要验证这个响应是不是微信支付服务器官方发出的，以防止欺诈，这个验证的动作，就会使用到微信公钥证书。
+
+关于微信公钥证书的详细介绍可以参考[微信官方文档](https://pay.weixin.qq.com/wiki/doc/apiv3/wechatpay/wechatpay4_1.shtml)
+
+::: tip Swoole 模式
+如果您在 swoole 等常驻进程下使用 Pay，那您无需再配置 `wechat_public_cert_path` 参数，Pay 会自动帮你搞定一切：从微信服务器获取最新证书并自动缓存配置。
+:::
+
+::: warning PHP-FPM 模式
+如果您在 php-fpm 进程下使用 Pay，强烈建议您手动配置 `wechat_public_cert_path` 参数。当然，您也可以不用配置，不过，您每次支付将从微信服务器获取最新的证书并验证，这将有性能上的损耗。
+:::
